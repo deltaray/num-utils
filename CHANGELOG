@@ -1,0 +1,89 @@
+
+ Nov. 19th, 2004 04:53 GMT
+----------------------------
+Fifth Beta Release v0.5
+
+ - Cleaned up a few bits of code in numsum.
+ - Adjusted copyright years to 2004.
+
+
+ Aug. 28th, 2004 06:40 GMT
+----------------------------
+
+ - Added -c,-r,-x,-y options to numsum to allow it
+ to sum columns and rows and specify which rows and columns you want.
+
+  * Special thanks to the folks on #perl on irc.freenode.org for helping
+    me out with the regex for this one.
+
+ - Added -<n> number hack to numsum to quickly specify the column number
+  that you want to sum.  For now it only does columns 1 through 9 because
+  I need to figure out how to get past Getopt::Std to get the whole number
+  specified.  Since this is such a hack, I might just leave it as is or drop it.
+
+
+ Aug. 25th, 2004 19:56 GMT
+----------------------------
+
+ - Made some changes to the GOALS file in regards to what options are being planned.
+
+
+ Sept. 23rd, 2003 22:23 GMT
+----------------------------
+ Fourth Beta Release v0.4
+
+ - Added -R option to normalize
+ - updated utils to include man page reference to normalize
+ - updated range program to include man page reference to seq(1)
+ - Added feedback directory and files to CVS.
+
+ Sept. 22nd, 2003 22:24 GMT
+----------------------------
+
+ - Added normalize program and documentation.
+
+ Sept. 21st, 2003 20:51 GMT
+---------------------------
+
+ - Added median function and -M option
+ - Added -l option for using the lower median number on even sets.
+
+ Sept. 19th, 2003 15:50 GMT
+----------------------------
+
+ - Added find_mode subroutine to average program and respective documentation.
+
+ June  9th, 2003 14:48 GMT
+---------------------------
+ Third Beta Release v0.3
+ - Added -q option to interval and updated documentation.
+
+ June  3rd, 2003 23:26 GMT
+---------------------------
+ - Added interval program with initial functionality
+ - Changed man page listing on other programs to include interval
+ - Updated GOALS file to include 'interval' goals and also added the -t
+   option to numsum's goals.
+ - Updated spec file with interval file entries.
+ - Updated README file.
+
+ May  29th, 2003 20:12 GMT
+--------------------------
+ Second Beta Release v0.2
+
+ - Fixed formatting in GOALS document.
+ - Added some of the features submitted by areiner@tph.tuwien.ac.at 
+   to the GOALS file.
+ - Added helpful information for the 'bound' program to explain that the
+   default is to find the maximum number.
+ - Added code to 'numgrep' to handle factors and multiples.
+ - Added expression info and examples to 'numgrep' man page/pod and help output.
+ - Added code and documentation for -e (exclude) option for 'range'. 
+ - Fixed a few things in the README.
+ - Made the sqrt function in numprocess process negative numbers as imaginary.
+
+ June 17th, 2002 13:00 GMT
+--------------------------
+
+  Initial Beta Release v0.1
+

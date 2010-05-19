@@ -1,0 +1,121 @@
+
+ num-utils is Copyright 2002-2003 Suso Banderas
+====================----------------------------
+
+**PLEASE ALSO READ THE WARNING FILE THAT**
+      **COMES WITH THIS PROGRAM.**
+
+  Description - num-utils are a set of utilities that aim to provide 
+ the numeric equivilent of the GNU text-utils.  These programs do
+ operations on numbers such as filtering, adding, averaging and so on.
+ They help expand and complete the shell vocabulary.
+
+  Right now these programs are in the beta stage.  If you have any bug
+ fixes or suggestions to improve this program, please see the "Contact"
+ section of this document .  An extensive list of planned features is
+ in the 'GOALS' file included with this program.
+
+  Installation
+  ------------
+
+  For now please use the Makefile to install the programs.  By default
+ this will install them in /usr/bin.   Standard 'make' and 'make install'
+ commands will build and install the programs.  You can also make an RPM
+ source and binary package from the Makefile using 'make rpm'.
+
+  How to use
+  ----------
+
+  These programs are useful when you want to deal with numbers on stdin or
+  from files.  There are different programs for different functions:
+
+   numsum - Adding a set of numbers from stdin is simply a matter of passing
+           just the numbers themselves to numsum.
+
+        $ cat test/numbers | numsum
+        21937.74
+        $
+
+    You can use other programs like numgrep, awk or sed to get just the numbers
+   that you want from a file:
+
+        $ cat access_log | awk {'print $10'} | numsum
+
+   numgrep - Simular to grep, but specific to numbers.  This program will let
+             you search for ranges of numbers and sequences.
+
+        $ numgrep /-5..5,100..200/ tests/numbers
+        5
+        135
+        135
+        1
+        1.5
+        4.5351
+        3
+        3
+        -1
+        -2.543
+        -1
+        3
+
+   random - Generates random numbers based on range expressions.
+
+        $ randnum /0..100/
+        47
+        $
+
+   range -  This program will spit out a sequence of numbers for use in stuff
+           like shell for loops.  The syntax for this program will most likely
+           change in the next version.
+
+        $ range /5..10/
+        5 6 7 8 9 10
+        $
+        
+        $ for i in `range /1..5,10..15/` ; do mv track$i.mp3 song$i.mp3 ; done
+        1
+        2
+        3
+        4
+        5
+        10
+        11
+        12
+        13
+        14
+        15
+        $
+
+   interval - This program will calculate and display the interval between
+   every two seqeuntial numbers on the input stream:
+
+       $ cat numbers
+       1
+       2
+       3
+       5
+       10
+       45
+       35
+       2
+       1
+       $ cat numbers | interval
+       1
+       1
+       2
+       5
+       35
+       -10
+       -33
+       -1
+       $
+
+  Contact
+  -------
+
+  Please send bug reports, suggestions, requests or correspondence to Suso Banderas
+  at 'suso@suso.org'.  You can visit the homepage for this program at:
+
+    http://suso.suso.org/programs/num-utils/
+
+

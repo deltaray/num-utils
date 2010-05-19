@@ -1,0 +1,557 @@
+
+num-utils - Goals for this project
+-----------------------------------
+
+(NOTE: This document does not represent a currrent feature set, please read
+       the README file and man pages instead.)
+
+  This document outlines certain criteria that the num-utils should eventually
+meet.  It outlines a general interface that each utility should follow and
+guides the project to bring the num-utils to version 1.0
+
+  The initial releases of the num-utils will be small and much less featured
+than what is shown below.   I originally wrote the num-utils with many of
+the features shown below, but everything was rather unorganized and some of
+the programs simply processed the data incorrectly.  I decided that I would
+go back to the beginning, write down all the features that I would like to
+have and think are useful, and create a development cycle.  I'll release
+each version to the public for review, comments and contribution.  Anyone who
+is interested in helping out in any way, please contact me at suso@suso.org.
+Any contributions are welcome.
+
+  I've put an 'X' at the begining of the line for features that have been
+completeled.
+
+-= All numeric utilities =-
+
+ 1. All num utils should process data on either STDIN or from a file or files
+    specified from command line arguments.
+
+    Examples of STDIN usage:
+
+        cat file | num-util
+        num-util < file
+        num-util
+           [Program will wait for data on STDIN until Ctrl-D is pressed]
+
+    Examples of file argument usage:
+
+        num-util file
+        num-util file1 file2 file3 ... fileN
+        num-util -[options] file1 file2 file3
+
+
+ 2. All num utils should use the following options that are standard among
+    all the utilities:
+
+X   -h   -- provide helpful usage information
+X   -V   -- Be verbose.  Send verbose information to STDERR.
+X   -d   -- Debug information for developers.  This implies verbose and more.
+    -q   -- Quiet mode, Don't print out any warnings about file read errors.
+
+    -i   -- Output numeric values as their integer only.
+    -I   -- Output numeric values as their decimal portion only.
+    -a   -- Don't treat '-' characters as negative signs.
+            Think of -a as 'absolute value'.
+    -d   -- Don't treat the '.' character as a decimal point.
+    -N   -- Don't process complete numbers, process each numeric character
+            individually.
+    -C   -- Commify numbers in output.  Instead of printing out '1000000', it
+            should print out '1,000,000'.
+    -b <n>
+         -- Use the following base <n> when dealing with numbers.
+    --   -- Don't process any more arguments as options.
+
+
+ 3. All num utils should provide user documentation in the form of man pages.
+
+  - While the programs are written in perl I plan on using POD information in
+    the programs themselves and then that documentation can be exported to man
+    pages, info docs or HTML format.
+
+  - Eventually I would like to write the documentation in SGML so that it can
+    be easily converted into many different formats.
+
+ 4. All num utils should provide summarized help with the -h option simular to
+    the following:
+
+    ----------------------------------------------
+    numutil: process numbers in such a way......
+    ----------------------------------------------
+
+    Usage:  numutil [options] [file args]
+            STDIN | numutil [options]
+            numutil [options] < file
+
+    Options:
+            -h      Help: You're looking at it.
+            -V      Increase verbosity.
+            -d      Don't treat the '.' character as a decimal point.
+
+ 5. All numeric utilities should abstract their functionality as much as
+    possible so that a numeric processing module can be written to make things
+    consistent among all numeric utility programs.
+
+ 6. The num-utils set of utilities should be available in the following forms
+    for download:
+
+     o tar format, both gz and bz2
+     o rpm package
+     o gentoo ebuild tree
+     o deb package
+
+ 7. The Makefile should be setup to be able to create the different package
+    formats listed above as well as the man pages from the perldoc information
+    in each utility's source code.
+
+ 8. Numeric expressions  (regular expressions, plus operations for numbers)
+
+    ..   -- range operator
+    i    -- increment operator
+    f    -- factor operator
+    m    -- multiple operator
+    ,    -- expression seperation separator
+
+    []   -- character grouping
+    +    -- quantifier  (1 or more)
+    *    -- quantifier  (0 or more)
+    ?    -- Match the preceding character 0 or 1 times.
+    {}   -- for matching specific number of times.
+
+-- Some goals sent in by areiner@tph.tuwien.ac.at (thanks) --
+
+  - Support for locale changes between . and , usage.  In other parts of
+    the world they use a period in the place of a decimal point
+    (ie. 1.000.000,50 means one million and 5 tenths).
+
+  - Some of the utilities should be able to recurse through subdirectories,
+    where appropriate.
+
+  - Support for output and input of numbers in scientific noation.
+    (ie. 1.3e-7 for 0.0000013)
+
+  - A utility for sorting numbers in mixed notations.  For instance, it
+    is hard to sort numbers that are in scientific notation or commified
+    along side ones that aren't.  Maybe this is a call for a numsort utility.
+
+
+-= Individual program goals =-
+
+-- numsum --
+
+  This program adds up all numbers encountered.  In it's basic operation, it
+  will simply add up all the numbers that it encounters.  The numbers can be one
+  per line, multiple per line separated by space or multiple numbers separated
+  by anything.
+
+  Eventually, it would be nice if numsum could do things like sum up individual
+  rows or columns of input separately.  There might be other types of summing
+  functions that would be useful when dealing with textual input.
+
+
+  Examples
+     $ cat numbers
+     1
+     2
+     3
+     4
+     $ cat numbers | numsum
+     10
+     $ numsum numbers
+     10
+
+  Advanced Examples
+     $ cat columns
+     1 6 11 16 21
+     2 7 12 17 22
+     3 8 13 18 23
+     4 9 14 19 24
+     5 10 15 20 25
+     $ cat columns | numsum -c
+     15 40 65 90 115
+     $ cat columns | numsum -r  (add up the rows)
+     55
+     60
+     65
+     70
+     75
+     $ 
+
+ Usage options  (in addition to the standard options)
+
+   -a   -- Add all numbers in the file, not just the first ones found on each
+           line.   
+X  -c   -- Treat each line as a set of columns separated by white space, or a
+           string if the -s option is used.  Sum up the values in each column
+           and print out the result of each column seperated by the seperation
+           character.  This is shown above in the advanced examples section.
+X  -s <string>  [for columns]
+        -- Use <string> as the separator between each column.  This is allowed
+           to be more than one character and possibly even a number.
+X  -r   -- Treat each line (by default) as a row of numbers to sum up.  The
+           results of the sums of each row will be printed on seperate lines.
+   -s <string>  [for rows] 
+        -- When used with the -r flag, this will specify the seperator for
+           rows.  By default it is the new line character.  It could be a
+           character, set of characters or even a number.
+
+   -t <x>  
+        -- When used, it will add up every <x>th number and at the end
+           print out <x> rows showing the sums of each <x>th number.  This
+           would be useful for example if you had data from each day of the
+           month and you wanted to sum up the date for each week day.
+           So you might do something like this
+
+           $ cat monthly-data | numsum -t 7
+          
+
+
+ Options that might be included eventually.
+
+X  -x <n> -- Where <n> is some number.  This would be a shortcut for adding up
+           all the numbers in the <n>th column of the input.  By default, the
+           columns would be determined by white space, but could also be
+           determined by the -s flag.  This must be used with the -c or -r flag.
+           So you can do something like:
+           
+           $ numsum -c -x 10 access_log  
+
+           To get the total bytes transfered in an access_log.
+
+           Maybe this could also be able to handle comma seperated values, so
+           1,5,10 would sum up the 1st, 5th and 10th columns.
+
+
+-- numgrep --
+
+  This program is the numeric equivilent of the unix grep utility.  numgrep
+will search textual input for numbers matching the expression specified from
+the command line.  The main power of numgrep is in being able to search for
+ranges of numbers.  Such as searching for all numbers between 1 and 100.
+Normal unix grep and regular expressions would not allow you to do this simple
+task, but with numgrep's numeric matching expressions it is possible to match
+numbers in ways not previously possible.
+
+  A few examples of numgrep's usage:
+
+X  o Search for all numbers between 1 and 100 in the file data.txt.
+
+      numgrep /1..100/ data.txt
+
+X  o search for numbers between 1 and 37,even numbers between 50 and 58 as
+    well as the numbers 79, 86 and 94.
+
+      numgrep /1..37,5[2468],79,86,94/ data.txt
+
+X  o search for numbers from -10 to 10.
+
+      numgrep /-10..10/ data.txt
+
+X  o search for numbers that are multiples of 7
+   
+      numgrep /m7/  data.txt
+
+   o search for numbers that are multiples of 7, 12 and 22
+
+      numgrep /m7m12m22/ data.txt
+
+   o search for numbers that are factors of 1024 and multiples of 12 or numbers
+     that are factors of 2333 and multiples of 9
+
+      numgrep  /f1024m12,f2333m9/ data.txt
+
+   o seach for numbers that are in the set 1, 4, 7, 10, 13 and 16
+   
+      numgrep /1..16i3/ data.txt
+
+ Usage options  (in addition to the standard options)
+
+  -l  -- Instead of keeping the numbers in their textual context, print
+         them out one number per line.
+  -R  -- Inverse the sense of matching. To match non-matching numbers
+  -r  -- Recurse subdirectories.
+  -p <file>
+      -- Obtain the patterns from file <file>
+  -f  -- Suppress normal output and just print the names of the files
+        that contain a match one per line.
+  -F  -- Suppress normal output and print the names of the files for which
+         no output would have been printed.
+  -n  -- Print the line number in front of each line that contains a match. 
+
+  -c  -- Don't save non-numeric context.  This will cause numgrep to dump all
+        non-matching/non-numeric values around the numbers that match.
+
+ Eventual options
+
+  -A [n] -- Print [n] lines of context out after the matching line.
+            The default is 2.
+  -B [n] -- Print [n] lines of context out before the matching line.
+            The default is 2.
+
+Feature submitted by areiner@tph.tuwien.ac.at:
+
+- Intervals: I may be biased due to my work, but usually when you
+determine a quantity with only finite precision, people write
+something like 1.234 +/- 0.056 or 1.234(56) (the last form is more
+common, at least in physics journals; the interpretation is that the
+digits in brackets are taken to line up with the last digit shown,
+left-padded with zeroes and a decimal point in the correct place). The
+natural representation of both of these is as intervals, i.e. as sets
+of two numbers representing lower and upper bounds. Thus, the given
+number should be turned into something like 1.178..1.290, and there
+should be a conversion function that turns it back into either of the
+other two.
+
+
+
+
+-- average --
+
+ This program finds the average of all numbers encountered.  By default it will
+find the mean average of all the numbers.  Meaning (;-) that it will add up all
+the values and divide that sum by the number of values encountered.  It should
+eventually offer more sophisticated calculations like finding the median and
+mode values.
+
+  Examples of usage:
+  
+    $ cat numbers
+    4
+    8
+    9
+    20
+    99 
+    $ average numbers
+    28
+    
+  Usage options:
+
+X  -m   -- Print out the mode value of all the numbers entered.  The mode is
+           the most frequently occuring value in the set.
+
+X  -M   -- Print out the median of the set of numbers entered.  The median is
+           the middle value all all numbers encountered.  So if the numbers
+           88, 12, 2, 1, 9, 100 and 1000 are encountered, the median of that
+           set is 12.  Illustrated:
+
+              1 2 9 12 88 100 1000
+                    ^^
+X  -l   -- Use the lower number of the median on even counted sets.
+
+   -a   -- average all numbers in the file, not just the first ones found on
+           each line.   
+   -c   -- Treat each line as a set of columns separated by white space, or a
+           string if the -s option is used.  Average the values in each column
+           and print out the result of each column seperated by the seperation
+           character.  This is shown above in the advanced examples section.
+   -s <string>  [for columns]
+        -- Use <string> as the separator between each column.  This is allowed
+           to be more than one character and possibly even a number.
+   -r   -- Treat each line (by default) as a row of numbers to sum up.  The
+           results of the averages of each row will be printed on seperate
+           lines.
+   -s <string>  [for rows]
+        -- When used with the -r flag, this will specify the seperator for
+           rows.  By default it is the new line character.  It could be a
+           character, set of characters or even a number.
+
+
+ Options that might be included eventually.
+
+   -n <n> -- Where <n> is some number.  This would be a shortcut for averaging
+           all the numbers in the <n>th column of the input.  By default, the
+           columns would be determined by white space, but could also be
+           determined by the -s flag.  This must be used with the -c or -r flags.
+
+
+
+ Usage options  (in addition to the standard options)
+
+
+-- normalize --
+
+  This program will distribute a group of numbers between 0 and 1 by default according
+  to their initial value.  You can change the range using the -R option.
+
+  Usage options:
+
+X  -R <range>  --  This is for specifying a range to normalize for instead of 0..1
+
+
+
+-- round --
+
+   This utility will round each number encountered up or down depending on it's
+  decimal value or it's relation to a number.  It will probably also deal with
+  finding the floor or ceiling values of numbers.  It should also be able to
+  round to factors of certain numbers.
+
+   Options:
+   
+X   -n <n>  -- Round to the nearest factor of <n>.  Instead of just rounding all
+              decimal numbers, you can also round to a factor of any number.  So
+              if you set <n> to 1000 and you encounter the number 6777, it will
+              round that number to 7000.  If you set <n> to 3 and encounter the
+              number 7, it will round it to 6.
+ 
+X   -c  -- Find the ceiling of each number encountered.  Round up.
+X   -f  -- Find the floor of each number.  Round down.
+
+
+-- range --
+
+  Print out a range of numbers for use in for loops and such.
+
+   o Do zero or character padding with the -p option.  So 1 becomes 001 if the
+     range has an upper limit of 3 digits.
+
+   o Accept ranges in the following formats:
+
+      n1..n2   (ex. 1..100 ; All integers from 1 to 100)
+      n1..n2,n3..n4  (ex. 1..10,50..100 ; All integers from 1 to 10 and
+                                          from 50 to 100)
+      n1..n2i2  (ex. 2..20i2 ; All even numbers from 2 to 20)
+                (ex. 1..19i2 ; All odd numbers from 1 to 19)
+                (ex. 3..21i3 ; 3, 6, 9, 12, 15, 18, 21)
+      n1.d..n2.di0.1
+                (ex. 1.1..2.0i0.1 ; 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8,
+                                    1.9, 2.0)
+      Or any combination of the above.
+
+ Usage options  (in addition to the standard options)
+
+   -p <prefix> -- Put the following prefix before each number.
+   -s <suffix> -- Put the following suffix after each number.
+X  -n <separator> -- Use <separator> as a character to separate each number.
+                    By default, a space is used.  Use the sequence \n to specify
+                    a newline.
+X  -N          -- Shortcut for using a newline separator.
+X  -e <set>
+      -- Exclude the numbers in <set> from the output.  This is so that if
+         you want to do a complex range without including certain numbers.
+         <set> is a list of numbers seperated by a ','.
+
+-- random --
+
+  Print out a random number or numbers.  This program will take a range of
+ numbers much like the range command does.  Except that instead of printing out
+ all the numbers in that range, it will print out a random number from that
+ range.
+
+   Ex:
+       $ random 1..100
+       37
+       $ random 1.0..100.0
+       56.9
+       $ random 1.000..100.000
+       42.397
+       $ random 2..100i2   [only pick among the even integers from 2 to 100]
+       68
+
+ Usage options  (in addition to the standard options)
+
+   -n <n> -- Generate <n> random numbers seperated by a space.
+   -s <c> -- Use <c> as the seperation character.
+   -N     -- Shortcut for using a newline separation character.
+
+
+Feature submitted by areiner@tph.tuwien.ac.at:
+
+- You should specify the distribution you are generating;
+probably, this is just an equal distribution. What would come in handy
+quite often is to have a way of producing pseudo-random numbers that
+realize a chosen distribution with a given set of parameters. But that
+should probably be a different program than random, e.g. distribution,
+as the name is already taken. So, e.g., ``distribution --gaussian 3.0
+4.0 100'' should produce 100 numbers distributed according to a gauss
+distribution with mean 3 and variance 4.
+
+
+-- bound --
+
+  This program is for finding the maximum, minimum and surrounding numbers in a
+ set.  You can use different options to specify how many numbers are returned as
+ to show top maximum and minimum lists.  Also you can show the numbers that
+ occur around the context of the boundary numbers.
+
+   Ex:
+     $ cat numbers
+     1 10 8 100 15 1000
+     2 9 5 15 27 12 136
+     $ bound -u numbers   (upper)
+     1000
+     $ bound -l numbers   (lower)
+     1
+
+  Top 4 upper numbers sorted
+     $ bound -u -n 4 numbers
+     1000
+     136
+     100
+     27
+
+  Bottom 4 lower numbers sorted)
+     $ bound -l -n 4 numbers
+     1
+     2
+     5
+     8
+
+  Context around lowest number.  Show 2 numbers of context.
+     $ bound -l -c 2 numbers
+     1 10 8
+
+  Find the 5 closet numbers to the number 75.  They will print out
+  in closeness order.
+  
+     $ bound -f 75 -n 6
+     100
+     27
+     15
+     15
+     136
+     10
+
+ Usage options  (in addition to the standard options)
+
+  -u  -- Return the upper bound number in the set  (the maximum number)
+  -l  -- Return the lower bound number in the set  (the minimum number)
+  -n <n> --  Return the top or bottom <n> numbers or <n> numbers around
+             a number.
+  -c <n> --  In addition to the number returned, show <n> numbers on both sides
+             of the number.
+  -f <n> --  Find the number <n> or the closest number to <n>.
+
+-- numprocess -- (maybe a name like mutate, alter, or process would be better)
+
+  This program mutates numbers as it encounters them.  It should do the
+  following operations:
+
+   o Add/Subtract a value to a number
+   o Multiply/Divide a number by a factor
+   o Raise a number to a power  (includes the concept of roots)
+   o Round a number up or down
+   o Do any mathematical function to a number.
+   o Quantify a number.  So 1024 bytes is 1KB and so on.
+
+  Ex:
+
+     Add 1 to each number
+      $ numprocess /+1/
+
+     Multiply each number by 8 and then divide by 5
+      $ numprocess /*8,%5/
+
+     Convert from Farenheit to Celcius
+      $ numprocess /-32,*5,%9/
+
+ Usage options  (in addition to the standard options)
+
+
+
+-- interval --
+
+  This program calculates and displays the interval between one number
+  and the next.
+
+  

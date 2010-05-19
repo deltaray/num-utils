@@ -1,0 +1,14 @@
+ls: /var/spol/mail: No such file or directory
+total 3016
+-rw-r--r--    1 root     root       253052 Dec  7 07:20 boot.log
+-rw-------    1 root     root       232098 Dec  7 07:50 cron
+-rw-r--r--    1 root     root         2445 Dec  7 07:05 dmesg
+-rw-r--r--    1 root     root            0 Jan  7  1980 htmlaccess.log
+-rw-r--r--    1 root     root      1184060 Dec  7 07:06 lastlog
+-rw-------    1 root     root        15107 Dec  7 07:20 maillog
+-rw-------    1 root     root      1377202 Dec  7 07:37 messages
+-rw-r--r--    1 root     root          479 Nov 25 10:31 netconf.log
+-rw-------    1 root     root         7356 Dec  7 07:06 secure
+-rw-r--r--    1 root     root          616 Dec  7 04:03 sendmail.st
+-rw-------    1 root     root            0 Jan  7  1980 spooler
+-rw-rw-r--    1 root     utmp      1133184 Dec  7 07:06 wtmp

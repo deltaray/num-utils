@@ -1,0 +1,18 @@
+num-utils - WARNING
+-----------------------------------
+
+  The num-utils are not nearly tested as much as they should be and does
+not have all the functionality that you may expect it to have. I'm
+releasing them now so that I can get a little bit of input from 
+potential users of the programs and also so that I could reach a checkpoint
+in their development.  If you have a problem with num-utils please notify
+me at 'suso@suso.org' and I will take note of the bug or your comments.
+
+  It should also be noted that options and expected behavior are likely
+to change before the release of version 1.0.  Right now I'm trying to
+find the best interface for these programs.
+
+ Thanks for being patient,
+
+ Suso Banderas
+ suso@suso.org

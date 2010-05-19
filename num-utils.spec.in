@@ -1,0 +1,74 @@
+# $Id: num-utils.spec.in,v 1.12 2004/11/19 04:55:01 suso Exp $
+
+Summary: num-utils are a set of programs for dealing with numbers.
+Name: num-utils
+Version: @VERSION@
+Release: 1
+Copyright: GPL
+Group: Utilities
+Source: num-utils-@VERSION@.tar.gz
+BuildArch: noarch
+BuildRoot: /var/tmp/num-utils-build-@VERSION@
+Packager: Suso Banderas <suso@suso.org>
+Vendor: suso.org
+%description
+The num-utils, short for numeric utilities are a set of programs designed
+to work together from the unix shell to do numeric operations on input.
+They are basically the numeric equivilent of common unix text utilities
+and aim to help complete the unix shell vocabulary.
+
+%prep
+%setup
+
+
+%build
+make
+
+%install
+make ROOT="$RPM_BUILD_ROOT" rpminstall
+
+%files
+%attr(0755 root root) /usr/bin/average
+%attr(0755 root root) /usr/bin/bound
+%attr(0755 root root) /usr/bin/interval
+%attr(0755 root root) /usr/bin/normalize
+%attr(0755 root root) /usr/bin/numgrep
+%attr(0755 root root) /usr/bin/numprocess
+%attr(0755 root root) /usr/bin/numsum
+%attr(0755 root root) /usr/bin/random
+%attr(0755 root root) /usr/bin/range
+%attr(0755 root root) /usr/bin/round
+%doc %attr(- root root) CHANGELOG COPYING GOALS LICENSE README WARNING template
+#%attr(0755 root root) tests
+%doc %attr(- root root) tests/
+%{_mandir}/man1/average.1.gz
+%{_mandir}/man1/bound.1.gz
+%{_mandir}/man1/interval.1.gz
+%{_mandir}/man1/normalize.1.gz
+%{_mandir}/man1/numgrep.1.gz
+%{_mandir}/man1/numprocess.1.gz
+%{_mandir}/man1/numsum.1.gz
+%{_mandir}/man1/random.1.gz
+%{_mandir}/man1/range.1.gz
+%{_mandir}/man1/round.1.gz
+
+
+%changelog
+* Fri Nov 19 2004 Suso Banderas <suso@suso.org>
+- 0.5 release
+
+* Tue Sep 23 2003 Suso Banderas <suso@suso.org>
+- 0.4 release
+- added file entries for normalize program.
+
+* Mon Jun  9 2003 Suso Banderas <suso@suso.org>
+- 0.3 beta release
+
+* Tue Jun  3 2003 Suso Banderas <suso@suso.org>
+- Added file entries for interval program.
+
+* Thu May 29 2003 Suso Banderas <suso@suso.org>
+- 0.2 beta release.
+
+* Mon Jun 17 2002 Suso Banderas <suso@suso.org>
+- Initial 0.1 release of the num-utils
