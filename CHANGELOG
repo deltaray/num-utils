@@ -1,4 +1,25 @@
 
+ Jun. 18th, 2008  - Jun. 27th
+---------------------------
+v0.6 (Really working towards 1.0)
+
+ - Fixed current spelling mistakes.  Oh my gosh, sorry.  I need to go back to grade school.
+ - When Ubuntu/Debian released num-utils in their repositories, they prefixed
+   all the programs with 'num', so average because numaverage, bound became numbound and
+   so on.  numsum and numgrep already had that, but I thought this was a good idea for
+   a few reasons. One being that you can type num<Tab><Tab> and in at least BASH will see
+   a list of potential programs.  Helpful to people who either want to know what is available
+   or if you forgot what is available.
+
+ - Created numformat with initial options.
+
+ - Added modulo operation to numprocess.
+
+ - Fixed bug in numrange where the prefix and suffix would give a warning if not set.
+
+ - Fixed bug in numprocess that basically prevented power functions from working.  Thanks Jan-Pieter Jacobs.
+
+
  Nov. 19th, 2004 04:53 GMT
 ----------------------------
 Fifth Beta Release v0.5

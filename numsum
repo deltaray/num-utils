@@ -25,6 +25,7 @@
 # VARIABLES AND SETUP #
 #######################
 
+use bignum;
 use Getopt::Std;
 #use strict;
 use vars qw/ %opts /;
@@ -51,7 +52,7 @@ if ($opts{'d'}) {
     $verbose = 1;  # Normal output.
 }
 
-# I'm not sure whether this should stay in or not.  It's mainly just for convience.
+# I'm not sure whether this should stay in or not.  It's mainly just for convenience.
 # It's a bad hack because you can only specify 1 through 9.  Maybe sometime I'll figure
 # out how to bypass getopts to specify extra options.
 for ($n = 1 ; $n < 10; $n++) {
@@ -180,10 +181,10 @@ Options:
         -c      Print out the sum of each column.
         -r      Print out the sum of each row.
 
-        -x <n>  Specify a comma seperated list of columns to print.
-        -y <n>  Specify a comma seperated list of rows to print.
+        -x <n>  Specify a comma separated list of columns to print.
+        -y <n>  Specify a comma separated list of rows to print.
 
-        -s <string> Specify a seperator string for spliting columns.
+        -s <string> Specify a separator string for splitting columns.
                     This defaults to consecutive whitespace.
 
         -d      Debug. For developers only.
@@ -278,7 +279,7 @@ B<numsum> [-iIcdhrsvxy]     (Input on STDIN.  Use Ctrl-D to stop.)
 =head1 DESCRIPTION
 
 B<numsum> is a program that is part of the numeric utilities package.  B<numsum>
-will take all the numbers on stdin and return the sum of those numbers.  Currently
+will take all the numbers on STDIN and return the sum of those numbers.  Currently
 it only processes the first number on each line.  Besides positive numbers, it also
 handles negative numbers and numbers with decimals.
 
@@ -290,10 +291,10 @@ handles negative numbers and numbers with decimals.
     -c      Print out the sum of each column.
     -r      Print out the sum of each row.
 
-    -x <n>  Specify a comma seperated list of columns to print.
-    -y <n>  Specify a comma seperated list of rows to print.
+    -x <n>  Specify a comma separated list of columns to print.
+    -y <n>  Specify a comma separated list of rows to print.
 
-    -s <string> Specify a string to use as a seperator for columns.
+    -s <string> Specify a string to use as a separator for columns.
                 This defaults to be consecutive whitespace (\s+).
 
     -h  Help: You're looking at it.
@@ -319,7 +320,7 @@ Use it in a command pipeline.
     $ ls -1s | grep .mp3 | numsum -c -x 5
     72288
 
-Add up the total byte count in a http log file.
+Add up the total byte count in a HTTP log file.
     $ cat access_log | awk {'print $10'} numsum
 
     or 
@@ -368,7 +369,7 @@ Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
   Developers can read the GOALS file and contact me about providing
-submitions or help for the project.
+submissions or help for the project.
 
 =head1 MORE INFO
 

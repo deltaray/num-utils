@@ -4,7 +4,7 @@ Summary: num-utils are a set of programs for dealing with numbers.
 Name: num-utils
 Version: @VERSION@
 Release: 1
-Copyright: GPL
+License: GPL
 Group: Utilities
 Source: num-utils-@VERSION@.tar.gz
 BuildArch: noarch

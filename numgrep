@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# numgrep:  This program is the numeric equivilent of the grep
+# numgrep:  This program is the numeric equivalent of the grep
 # utility.  It searches for numbers, sets of numbers and so on.
 #   
 # Copyright (C) 2002-2004 Suso Banderas
@@ -105,7 +105,7 @@ Expressions:
             as 1..10, 1.. or ..10.  Which mean between 1 and 10, greater than
             1, and less than 10 respectively
 
-        ,   Expression seperator.  The comma seperates expressions within
+        ,   Expression separator.  The comma separates expressions within
             the forward slashes.   ie. /1..10,20..30,50,60,127/
 
         m   Multiple operator.  Using the m followed by an integer will match
@@ -261,7 +261,7 @@ sub parse_number {
 
 =head1 NAME
 
-numgrep -  This program is the numeric equivilent of the grep utility.
+numgrep -  This program is the numeric equivalent of the grep utility.
 
 
 =head1 SYNOPSIS
@@ -274,7 +274,7 @@ B<numgrep> [-dhlV]     (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<numgrep> searches for different occurances of numbers through the use
+B<numgrep> searches for different occurrences of numbers through the use
 of numeric expressions.
 
 =head1 OPTIONS
@@ -303,7 +303,7 @@ going:
          between, greater than or less than the numbers specified
          should be matched.
 
-    ,    Expression sepeartor.  The comma sepearates one complete
+    ,    Expression separator.  The comma separates one complete
          expression from another in a set enclosed by //.
 
     m<n> Multiples of <n>.  This operator, followed by a number
@@ -368,7 +368,7 @@ Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
   Developers can read the GOALS file and contact me about providing
-submitions or help for the project.
+submissions or help for the project.
 
 =head1 BUGS
 

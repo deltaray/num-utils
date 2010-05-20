@@ -2,7 +2,7 @@
 num-utils - Goals for this project
 -----------------------------------
 
-(NOTE: This document does not represent a currrent feature set, please read
+(NOTE: This document does not represent a current feature set, please read
        the README file and man pages instead.)
 
   This document outlines certain criteria that the num-utils should eventually
@@ -19,8 +19,8 @@ each version to the public for review, comments and contribution.  Anyone who
 is interested in helping out in any way, please contact me at suso@suso.org.
 Any contributions are welcome.
 
-  I've put an 'X' at the begining of the line for features that have been
-completeled.
+  I've put an 'X' at the beginning of the line for features that have been
+completed.
 
 -= All numeric utilities =-
 
@@ -65,14 +65,11 @@ X   -d   -- Debug information for developers.  This implies verbose and more.
 
  3. All num utils should provide user documentation in the form of man pages.
 
-  - While the programs are written in perl I plan on using POD information in
+  - While the programs are written in Perl I plan on using POD information in
     the programs themselves and then that documentation can be exported to man
     pages, info docs or HTML format.
 
-  - Eventually I would like to write the documentation in SGML so that it can
-    be easily converted into many different formats.
-
- 4. All num utils should provide summarized help with the -h option simular to
+ 4. All num utils should provide summarized help with the -h option similar to
     the following:
 
     ----------------------------------------------
@@ -97,7 +94,7 @@ X   -d   -- Debug information for developers.  This implies verbose and more.
 
      o tar format, both gz and bz2
      o rpm package
-     o gentoo ebuild tree
+     o Gentoo ebuild tree
      o deb package
 
  7. The Makefile should be setup to be able to create the different package
@@ -110,7 +107,7 @@ X   -d   -- Debug information for developers.  This implies verbose and more.
     i    -- increment operator
     f    -- factor operator
     m    -- multiple operator
-    ,    -- expression seperation separator
+    ,    -- expression separation separator
 
     []   -- character grouping
     +    -- quantifier  (1 or more)
@@ -124,10 +121,10 @@ X   -d   -- Debug information for developers.  This implies verbose and more.
     the world they use a period in the place of a decimal point
     (ie. 1.000.000,50 means one million and 5 tenths).
 
-  - Some of the utilities should be able to recurse through subdirectories,
+  - Some of the utilities should be able to recurse through sub-directories,
     where appropriate.
 
-  - Support for output and input of numbers in scientific noation.
+  - Support for output and input of numbers in scientific notation.
     (ie. 1.3e-7 for 0.0000013)
 
   - A utility for sorting numbers in mixed notations.  For instance, it
@@ -183,15 +180,15 @@ X   -d   -- Debug information for developers.  This implies verbose and more.
            line.   
 X  -c   -- Treat each line as a set of columns separated by white space, or a
            string if the -s option is used.  Sum up the values in each column
-           and print out the result of each column seperated by the seperation
+           and print out the result of each column separated by the separation
            character.  This is shown above in the advanced examples section.
 X  -s <string>  [for columns]
         -- Use <string> as the separator between each column.  This is allowed
            to be more than one character and possibly even a number.
 X  -r   -- Treat each line (by default) as a row of numbers to sum up.  The
-           results of the sums of each row will be printed on seperate lines.
+           results of the sums of each row will be printed on separate lines.
    -s <string>  [for rows] 
-        -- When used with the -r flag, this will specify the seperator for
+        -- When used with the -r flag, this will specify the separator for
            rows.  By default it is the new line character.  It could be a
            character, set of characters or even a number.
 
@@ -216,15 +213,15 @@ X  -x <n> -- Where <n> is some number.  This would be a shortcut for adding up
            
            $ numsum -c -x 10 access_log  
 
-           To get the total bytes transfered in an access_log.
+           To get the total bytes transferred in an access_log.
 
-           Maybe this could also be able to handle comma seperated values, so
+           Maybe this could also be able to handle comma separated values, so
            1,5,10 would sum up the 1st, 5th and 10th columns.
 
 
 -- numgrep --
 
-  This program is the numeric equivilent of the unix grep utility.  numgrep
+  This program is the numeric equivalent of the unix grep utility.  numgrep
 will search textual input for numbers matching the expression specified from
 the command line.  The main power of numgrep is in being able to search for
 ranges of numbers.  Such as searching for all numbers between 1 and 100.
@@ -260,7 +257,7 @@ X  o search for numbers that are multiples of 7
 
       numgrep  /f1024m12,f2333m9/ data.txt
 
-   o seach for numbers that are in the set 1, 4, 7, 10, 13 and 16
+   o search for numbers that are in the set 1, 4, 7, 10, 13 and 16
    
       numgrep /1..16i3/ data.txt
 
@@ -269,7 +266,7 @@ X  o search for numbers that are multiples of 7
   -l  -- Instead of keeping the numbers in their textual context, print
          them out one number per line.
   -R  -- Inverse the sense of matching. To match non-matching numbers
-  -r  -- Recurse subdirectories.
+  -r  -- Recurse sub-directories.
   -p <file>
       -- Obtain the patterns from file <file>
   -f  -- Suppress normal output and just print the names of the files
@@ -327,7 +324,7 @@ mode values.
   Usage options:
 
 X  -m   -- Print out the mode value of all the numbers entered.  The mode is
-           the most frequently occuring value in the set.
+           the most frequently occurring value in the set.
 
 X  -M   -- Print out the median of the set of numbers entered.  The median is
            the middle value all all numbers encountered.  So if the numbers
@@ -342,16 +339,16 @@ X  -l   -- Use the lower number of the median on even counted sets.
            each line.   
    -c   -- Treat each line as a set of columns separated by white space, or a
            string if the -s option is used.  Average the values in each column
-           and print out the result of each column seperated by the seperation
+           and print out the result of each column separated by the separation
            character.  This is shown above in the advanced examples section.
    -s <string>  [for columns]
         -- Use <string> as the separator between each column.  This is allowed
            to be more than one character and possibly even a number.
    -r   -- Treat each line (by default) as a row of numbers to sum up.  The
-           results of the averages of each row will be printed on seperate
+           results of the averages of each row will be printed on separate
            lines.
    -s <string>  [for rows]
-        -- When used with the -r flag, this will specify the seperator for
+        -- When used with the -r flag, this will specify the separator for
            rows.  By default it is the new line character.  It could be a
            character, set of characters or even a number.
 
@@ -429,7 +426,7 @@ X  -N          -- Shortcut for using a newline separator.
 X  -e <set>
       -- Exclude the numbers in <set> from the output.  This is so that if
          you want to do a complex range without including certain numbers.
-         <set> is a list of numbers seperated by a ','.
+         <set> is a list of numbers separated by a ','.
 
 -- random --
 
@@ -450,8 +447,8 @@ X  -e <set>
 
  Usage options  (in addition to the standard options)
 
-   -n <n> -- Generate <n> random numbers seperated by a space.
-   -s <c> -- Use <c> as the seperation character.
+   -n <n> -- Generate <n> random numbers separated by a space.
+   -s <c> -- Use <c> as the separation character.
    -N     -- Shortcut for using a newline separation character.
 
 
@@ -462,8 +459,8 @@ probably, this is just an equal distribution. What would come in handy
 quite often is to have a way of producing pseudo-random numbers that
 realize a chosen distribution with a given set of parameters. But that
 should probably be a different program than random, e.g. distribution,
-as the name is already taken. So, e.g., ``distribution --gaussian 3.0
-4.0 100'' should produce 100 numbers distributed according to a gauss
+as the name is already taken. So, e.g., ``distribution --Gaussian 3.0
+4.0 100'' should produce 100 numbers distributed according to a Gauss
 distribution with mean 3 and variance 4.
 
 
@@ -542,7 +539,7 @@ distribution with mean 3 and variance 4.
      Multiply each number by 8 and then divide by 5
       $ numprocess /*8,%5/
 
-     Convert from Farenheit to Celcius
+     Convert from Fahrenheit to Celsius
       $ numprocess /-32,*5,%9/
 
  Usage options  (in addition to the standard options)
@@ -554,4 +551,50 @@ distribution with mean 3 and variance 4.
   This program calculates and displays the interval between one number
   and the next.
 
-  
+  I'd like to add a feature to this program so that you can specify a boundary
+number that if the interval goes negative, it subtracts the previous number from the boundary
+and adds the new number to that to get the interval.  This is useful when you are calculating
+intervals between numbers that have an upper bound, like 32 bit integers.  I myself will use
+it for bandwidth counters.
+
+=== Roadmap to 1.0 ===
+
+- Fix as many bugs as I can along the way.
+- Feature freeze at 0.8
+
+ -- 0.6 --
+   - Aim for June 20th/21st,2008 release
+   - Fix reported bugs
+   - Fix spelling mistakes in documentation
+   - Rename all programs to have 'num' prefix.
+   - Create numformat utility that takes formating goals away from numprocess and puts them into its own util.
+   - Implment 25% of user feature requests
+   - Investigate feature requests from users and try to implement the ones that are most possible.
+   - Setup CVS/git or subversion for num-utils
+   - Make official dpkg for Debian and Ubuntu, and ebuild for Gentoo
+   - Create independent wiki or portal for num-utils
+
+ -- 0.7 --
+   - Aim for October 15th,2008 release
+   - Fix reported bugs
+   - Implment 25% of user feature requests
+   - Add support for arbitrary number sizes through bignum
+   - Add processing for different numeric bases
+   - Add scientific notation processing and output
+
+ -- 0.8 --
+   - Aim for a January 31st,2009 release
+   - Implment 25% of user feature requests
+   - Add support for regex in numgrep so that you can use numeric expressions in addition to regex.
+
+ -- 0.9 --
+   - Aim for a April 15th,2009 release
+   - Feature freeze
+   - Fix all bugs
+   - Rigurous testing
+
+ -- 1.0 --
+   - June 18th, 2009 release
+   - Fix any remaining bugs
+
+ 

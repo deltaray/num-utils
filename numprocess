@@ -24,6 +24,7 @@
 # VARIABLES AND SETUP #
 #######################
 
+#use bignum;
 use Getopt::Std;
 use strict;
 use vars qw/ %opts $verbose /;
@@ -103,6 +104,7 @@ Expressions:
    *     Multiplication
    %     Division
    ^     Power function
+   modN  Modulo operation against N - ex. mod26
    sqrt  Square Root
    sin   Sine function
    cos   Cosine function
@@ -139,16 +141,23 @@ sub process_number {
         $operation =~ s/pi$/3.141592654/i;
         $operation =~ s/e$/2.718281828/i;
 
+        print "operation is $operation\n" if ($verbose >= 3);
+
         if ($operation =~ /^\+($match_expression)$/) {
             $new_number = $new_number + $1;
         } elsif ($operation =~ /^\-($match_expression)$/) {
             $new_number = $new_number - $1;
+        } elsif ($operation =~ /^\^($match_expression)$/) {
+            $new_number = ${new_number}**${1};
         } elsif ($operation =~ /^\*($match_expression)$/) {
+        # This has issues of course if you have a directory in your root directory that ends in 1, 2, 3 etc.
+        # On my system I have a /home2 and *2 matches that, I'll have to fix this
+        # so that quotes can be used instead of //. Not sure why I choose to use //
             $new_number = $new_number * $1;
         } elsif ($operation =~ /^\%($match_expression)$/) {
             $new_number = $new_number / $1;
-        } elsif ($operation =~ /^\^($match_expression)$/) {
-            $new_number = $new_number^$1;
+        } elsif ($operation =~ /^mod($match_expression)$/) {
+            $new_number = $new_number % $1;
         } elsif ($operation =~ /^sqrt$/) {
             if ($new_number < 0) { # let's do something nice for negative sqrts.
                 $new_number *= -1;
@@ -197,7 +206,7 @@ of the original number.
 
    $ cat file1 | numprocess /*8,%5/
 
-  Convert from celcius to fahreheit degrees.  Multiply by 9, divide by 5 and add 32.
+  Convert from Celsius to Fahrenheit degrees.  Multiply by 9, divide by 5 and add 32.
 
    $ numprocess /*9,%5,+32/ temperatures
 
@@ -215,6 +224,7 @@ of the original number.
    *     Multiplication
    %     Division
    ^     Power function
+   modN  Modulo operation against N - ex. mod26
    sqrt  Square Root  (*)
    sin   Sine function
    cos   Cosine function
@@ -252,7 +262,7 @@ Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
   Developers can read the GOALS file and contact me about providing
-submitions or help for the project.
+submissions or help for the project.
 
 =head1 MORE INFO
 

@@ -32,7 +32,7 @@ RPMDIR	= $(shell rpm --showrc | grep " _topdir" | \
 	'/_topdir(?:\s+|\s+:\s+)(\/.*|%{_usrsrc}.*$$)/; \
 	$$dir = $$1; $$dir =~ s|%{_usrsrc}|/usr/src|; print "$$1\n";')
 
-# Modify these as nessecary
+# Modify these as necessary
 PERL	= /usr/bin/perl
 BINDIR	= /usr/bin
 TOPDIR	= $(ROOT)/usr

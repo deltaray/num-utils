@@ -6,7 +6,7 @@
       **COMES WITH THIS PROGRAM.**
 
   Description - num-utils are a set of utilities that aim to provide 
- the numeric equivilent of the GNU text-utils.  These programs do
+ the numeric equivalent of the GNU text-utils.  These programs do
  operations on numbers such as filtering, adding, averaging and so on.
  They help expand and complete the shell vocabulary.
 
@@ -26,10 +26,10 @@
   How to use
   ----------
 
-  These programs are useful when you want to deal with numbers on stdin or
+  These programs are useful when you want to deal with numbers on STDIN or
   from files.  There are different programs for different functions:
 
-   numsum - Adding a set of numbers from stdin is simply a matter of passing
+   numsum - Adding a set of numbers from STDIN is simply a matter of passing
            just the numbers themselves to numsum.
 
         $ cat test/numbers | numsum
@@ -41,7 +41,7 @@
 
         $ cat access_log | awk {'print $10'} | numsum
 
-   numgrep - Simular to grep, but specific to numbers.  This program will let
+   numgrep - Similar to grep, but specific to numbers.  This program will let
              you search for ranges of numbers and sequences.
 
         $ numgrep /-5..5,100..200/ tests/numbers
@@ -60,7 +60,7 @@
 
    random - Generates random numbers based on range expressions.
 
-        $ randnum /0..100/
+        $ random /0..100/
         47
         $
 
@@ -87,7 +87,7 @@
         $
 
    interval - This program will calculate and display the interval between
-   every two seqeuntial numbers on the input stream:
+   every two sequential numbers on the input stream:
 
        $ cat numbers
        1
