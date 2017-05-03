@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# normalize:  Normalize a set of numbers. By default between 0 and 1.
+# numnormalize:  Normalize a set of numbers. By default between 0 and 1.
 #   
 # Copyright (C) 2002-2004 Suso Banderas
 
@@ -84,13 +84,13 @@ exit(0);
 sub help {
 	print <<"EOF";
 ----------------------------------------------
-normalize : Normalize a set of numbers.
+numnormalize : Normalize a set of numbers.
 ----------------------------------------------
 Usage:
 
-    normalize [options] <file>
-    | normalize [options]
-    normalize [options]
+    numnormalize [options] <file>
+    | numnormalize [options]
+    numnormalize [options]
 
 Options:
         -d      Debug. For developers only.
@@ -143,19 +143,19 @@ sub normalize {
 
 =head1 NAME
 
-normalize - Normalize a set of numbers. By default between 0 and 1.
+numnormalize - Normalize a set of numbers. By default between 0 and 1.
 
 =head1 SYNOPSIS
 
-B<normalize> [-dhRV] <FILE>
+B<numnormalize> [-dhRV] <FILE>
 
-| B<normalize> [-dhRV]    (Input on STDIN from pipeline.)
+| B<numnormalize> [-dhRV]    (Input on STDIN from pipeline.)
 
-B<normalize> [-dhRV]      (Input on STDIN.  Use Ctrl-D to stop.)
+B<numnormalize> [-dhRV]      (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<normalize> is a program that is part of the numeric utilities package.  B<normalize>
+B<numnormalize> is a program that is part of the numeric utilities package.  B<numnormalize>
 will take a set of numbers on input and return that set as a normalized set of numbers
 between 0 and 1 by default.  Or you can use the -R option to specify a different normalized
 range.
@@ -172,11 +172,11 @@ range.
 
 =head1 SEE ALSO
 
-average(1), bound(1), interval(1), numgrep(1), numprocess(1), numsum(1), random(1), range(1), round(1)
+numaverage(1), numbound(1), numinterval(1), numgrep(1), numprocess(1), numsum(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 
-normalize is part of the num-utils package, which is copyrighted by
+numnormalize is part of the num-utils package, which is copyrighted by
 Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
@@ -185,7 +185,7 @@ submissions or help for the project.
 
 =head1 MORE INFO
 
-More info on normalize can be found at:
+More info on numnormalize can be found at:
 
 =over 1
 

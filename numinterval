@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# interval: This program calculates and displays the intervals between the
+# numinterval: This program calculates and displays the intervals between the
 # first line and the second, between the second line and the third on
 # through the end of the file.
 #   
@@ -89,7 +89,7 @@ exit(0);
 sub help {
 	print <<"EOF";
 -----------------------------------------------------------------------
-interval : Calculate the numeric intervals between lines in input.
+numinterval : Calculate the numeric intervals between lines in input.
 -----------------------------------------------------------------------
 Usage:
 
@@ -124,19 +124,19 @@ sub process_filehandle {
 
 =head1 NAME
 
-interval - Show the numeric intervals between each line in a file.
+numinterval - Show the numeric intervals between each line in a file.
 
 =head1 SYNOPSIS
 
-B<interval> [-dhV] <FILE>
+B<numinterval> [-dhV] <FILE>
 
-| B<interval> [-dhV]    (Input on STDIN from pipeline.)
+| B<numinterval> [-dhV]    (Input on STDIN from pipeline.)
 
-B<interval> [-dhV]      (Input on STDIN.  Use Ctrl-D to stop.)
+B<numinterval> [-dhV]      (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<inter> is a program that is part of the numeric utilities package.  B<interval>
+B<inter> is a program that is part of the numeric utilities package.  B<numinterval>
 will calculate and display the numeric interval between one number and the
 next on an input stream.
 
@@ -155,11 +155,11 @@ in box office ticket sales for movies on imdb.com. ;-)
 
 =head1 SEE ALSO
 
-average(1), bound(1), normalize(1), numgrep(1), numprocess(1), numsum(1), random(1), range(1), round(1)
+numaverage(1), numbound(1), numnormalize(1), numgrep(1), numprocess(1), numsum(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 
-interval is part of the num-utils package, which is copyrighted by
+numinterval is part of the num-utils package, which is copyrighted by
 Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 

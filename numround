@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# round: A program that rounds off numbers it encounters.
+# numround: A program that rounds off numbers it encounters.
 #   
 # Copyright (C) 2002-2004 Suso Banderas
 
@@ -84,13 +84,13 @@ exit(0);
 sub help {
 	print <<"EOF";
 ---------------------------------------------------------
-round : A program that rounds off numbers it encounters.
+numround : A program that rounds off numbers it encounters.
 ---------------------------------------------------------
 Usage:
 
-    round [options] <file>
-    | round [options]
-    round [options]
+    numround [options] <file>
+    | numround [options]
+    numround [options]
 
 Options:
         -c      Force the number to be rounded up. Ceiling.
@@ -162,19 +162,19 @@ sub floor_number {
 
 =head1 NAME
 
-round - A program that rounds off numbers it encounters.
+numround - A program that rounds off numbers it encounters.
 
 =head1 SYNOPSIS
 
-B<round> [-cdfhV] <FILE>
+B<numround> [-cdfhV] <FILE>
 
-| B<round> [-cdfhV]   (Input on STDIN from pipeline.)
+| B<numround> [-cdfhV]   (Input on STDIN from pipeline.)
 
-B<round> [-cdfhV]     (Input on STDIN.  Use Ctrl-D to stop.)
+B<numround> [-cdfhV]     (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<round> is a program that is part of the numeric utilities package.  B<round>
+B<numround> is a program that is part of the numeric utilities package.  B<numround>
 will simply round decimal numbers to the nearest integer or to a factor of any
 number using the -n option.  You can also force it to round up (ceiling) or
 round down(floor) using the -c and -f options.
@@ -192,19 +192,19 @@ round down(floor) using the -c and -f options.
 
 =head1 BUGS
 
-B<round> currently only rounds the first number on each line.  Eventually this
+B<numround> currently only rounds the first number on each line.  Eventually this
 will be changed as all the numeric utilities are developed.
 
-B<round> will drop off the decimal places in decimal numbers.  This may cause
+B<numround> will drop off the decimal places in decimal numbers.  This may cause
 some calculations to be in error, depending on how you are using the data.
 
 =head1 SEE ALSO
 
-average(1), bound(1), interval(1), normalize(1), numgrep(1), numprocess(1), numsum(1), random(1), range(1)
+numaverage(1), numbound(1), numinterval(1), numnormalize(1), numgrep(1), numprocess(1), numsum(1), numrandom(1), numrange(1)
 
 =head1 COPYRIGHT
 
-round is part of the num-utils package, which is copyrighted by
+numround is part of the num-utils package, which is copyrighted by
 Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
@@ -213,7 +213,7 @@ submissions or help for the project.
 
 =head1 MORE INFO
 
-More info on round can be found at:
+More info on numround can be found at:
 
 =over 1
 
