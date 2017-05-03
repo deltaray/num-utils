@@ -25,32 +25,32 @@ and aim to help complete the unix shell vocabulary.
 make
 
 %install
-make ROOT="$RPM_BUILD_ROOT" rpminstall
+make ROOT="$RPM_BUILD_ROOT" TOPDIR="$RPM_BUILD_ROOT/usr" rpminstall
 
 %files
-%attr(0755 root root) /usr/bin/average
-%attr(0755 root root) /usr/bin/bound
-%attr(0755 root root) /usr/bin/interval
-%attr(0755 root root) /usr/bin/normalize
+%attr(0755 root root) /usr/bin/numaverage
+%attr(0755 root root) /usr/bin/numbound
+%attr(0755 root root) /usr/bin/numinterval
+%attr(0755 root root) /usr/bin/numnormalize
 %attr(0755 root root) /usr/bin/numgrep
 %attr(0755 root root) /usr/bin/numprocess
 %attr(0755 root root) /usr/bin/numsum
-%attr(0755 root root) /usr/bin/random
-%attr(0755 root root) /usr/bin/range
-%attr(0755 root root) /usr/bin/round
+%attr(0755 root root) /usr/bin/numrandom
+%attr(0755 root root) /usr/bin/numrange
+%attr(0755 root root) /usr/bin/numround
 %doc %attr(- root root) CHANGELOG COPYING GOALS LICENSE README WARNING template
 #%attr(0755 root root) tests
 %doc %attr(- root root) tests/
-%{_mandir}/man1/average.1.gz
-%{_mandir}/man1/bound.1.gz
-%{_mandir}/man1/interval.1.gz
-%{_mandir}/man1/normalize.1.gz
+%{_mandir}/man1/numaverage.1.gza
+%{_mandir}/man1/numbound.1.gz
+%{_mandir}/man1/numinterval.1.gz
+%{_mandir}/man1/numnormalize.1.gz
 %{_mandir}/man1/numgrep.1.gz
 %{_mandir}/man1/numprocess.1.gz
 %{_mandir}/man1/numsum.1.gz
-%{_mandir}/man1/random.1.gz
-%{_mandir}/man1/range.1.gz
-%{_mandir}/man1/round.1.gz
+%{_mandir}/man1/numrandom.1.gz
+%{_mandir}/man1/numrange.1.gz
+%{_mandir}/man1/numround.1.gz
 
 
 %changelog
