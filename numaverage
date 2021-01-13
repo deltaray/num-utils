@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# average:  Find the average of a set of numbers.
+# numaverage:  Find the average of a set of numbers.
 #
 # Copyright (C) 2002-2004 Suso Banderas
 
@@ -100,12 +100,12 @@ print "$average\n";
 sub help {
 	print <<"EOF";
 ---------------------------------------------------------
-average : A program for finding the average of numbers.
+numaverage : A program for finding the average of numbers.
 ---------------------------------------------------------
 Usage:
-    average [options] file
-    | average [options]
-    average [options]
+    numaverage [options] file
+    | numaverage [options]
+    numaverage [options]
 
 Options:
         -i      Only return the integer portion of the final sum.
@@ -198,20 +198,20 @@ sub find_median {
 
 =head1 NAME
 
-average - Find the average of a set of numbers.
+numaverage - Find the average of a set of numbers.
 
 =head1 SYNOPSIS
 
-B<average> [-dhiIlmMV] <FILE>
+B<numaverage> [-dhiIlmMV] <FILE>
 
-| B<average> [-dhiIlmMV]    (Input on STDIN from pipeline.)
+| B<numaverage> [-dhiIlmMV]    (Input on STDIN from pipeline.)
 
-B<average> [-dhiIlmMV]      (Input on STDIN.  Use Ctrl-D to stop.)
+B<numaverage> [-dhiIlmMV]      (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<average> is a program that is part of the numeric utilities package.  By default
-B<average> will determine the average from all numbers on input.  Other
+B<numaverage> is a program that is part of the numeric utilities package.  By default
+B<numaverage> will determine the average from all numbers on input.  Other
 options allow you to find the mode and median.
 
 =head1 OPTIONS
@@ -231,11 +231,11 @@ options allow you to find the mode and median.
 
 =head1 SEE ALSO
 
-bound(1), interval(1), normalize(1), numgrep(1), numprocess(1), numsum(1), random(1), range(1), round(1)
+numbound(1), numinterval(1), numnormalize(1), numgrep(1), numprocess(1), numsum(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 
-average is part of the num-utils package, which is copyrighted by
+numaverage is part of the num-utils package, which is copyrighted by
 Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
@@ -244,7 +244,7 @@ submissions or help for the project.
 
 =head1 MORE INFO
 
-More info on average can be found at:
+More info on numaverage can be found at:
 
 =over 1
 

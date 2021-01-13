@@ -360,7 +360,7 @@ Add up the 2nd and 4th rows.
 
 =head1 SEE ALSO
 
-average(1), bound(1), interval(1), normalize(1), numgrep(1), numprocess(1), random(1), range(1), round(1)
+numaverage(1), numbound(1), numinterval(1), numnormalize(1), numgrep(1), numprocess(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 

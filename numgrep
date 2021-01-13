@@ -332,7 +332,7 @@ B<Examples:>
     /f1024/  Match any integer that is a factor of 1024.
 
 
-    $ range -N /1..1000/ | numgrep /f1024/
+    $ numrange -N /1..1000/ | numgrep /f1024/
     1
     2
     4
@@ -359,7 +359,7 @@ future.
 
 =head1 SEE ALSO
 
-average(1), bound(1), interval(1), normalize(1), numprocess(1), numsum(1), random(1), range(1), round(1)
+numaverage(1), numbound(1), numinterval(1), numnormalize(1), numprocess(1), numsum(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 

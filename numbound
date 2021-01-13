@@ -1,6 +1,6 @@
 #!/usr/bin/perl -w
 
-# bound: Find boundary numbers in files or STDIN.
+# numbound: Find boundary numbers in files or STDIN.
 #   
 # Copyright (C) 2002-2004 Suso Banderas
 
@@ -87,13 +87,13 @@ exit(0);
 sub help {
 	print <<"EOF";
 -------------------------------------------------------------------------------
-bound : Find boundary numbers in files or STDIN.  By default, find the maximum.
+numbound : Find boundary numbers in files or STDIN.  By default, find the maximum.
 -------------------------------------------------------------------------------
 Usage:
 
-    bound [options] <file>
-    | bound [options]
-    bound [options]
+    numbound [options] <file>
+    | numbound [options]
+    numbound [options]
 
 Options:
         -l  -- Return the lower bound number in the set  (the minimum number)
@@ -148,19 +148,19 @@ sub find_lower_bound {
 
 =head1 NAME
 
-bound - Find boundary numbers in files or STDIN.
+numbound - Find boundary numbers in files or STDIN.
 
 =head1 SYNOPSIS
 
-B<bound> [-dhlV] <FILE>
+B<numbound> [-dhlV] <FILE>
 
-| B<bound> [-dhlV]     (Input on STDIN from pipeline.)
+| B<numbound> [-dhlV]     (Input on STDIN from pipeline.)
 
-B<bound> [-dhlV]       (Input on STDIN.  Use Ctrl-D to stop.)
+B<numbound> [-dhlV]       (Input on STDIN.  Use Ctrl-D to stop.)
 
 =head1 DESCRIPTION
 
-B<bound> is a program that is part of the numeric utilities package.  B<bound>
+B<numbound> is a program that is part of the numeric utilities package.  B<numbound>
 will find boundary numbers (minimum and maximum) in files or STDIN.  By default
 it will find the upper bound in the set of numbers (the maximum number) in the
 files or on STDIN.  You can use the -l option for finding the lower bound (minimum
@@ -176,16 +176,16 @@ number).
 
 =head1 BUGS
 
-B<bound> currently will only gather the first number on each line instead of
+B<numbound> currently will only gather the first number on each line instead of
 all the numbers on the lines.
 
 =head1 SEE ALSO
 
-average(1), interval(1), normalize(1), numgrep(1), numprocess(1), numsum(1), random(1), range(1), round(1)
+numaverage(1), numinterval(1), numnormalize(1), numgrep(1), numprocess(1), numsum(1), numrandom(1), numrange(1), numround(1)
 
 =head1 COPYRIGHT
 
-bound is part of the num-utils package, which is copyrighted by
+numbound is part of the num-utils package, which is copyrighted by
 Suso Banderas and released under the GPL license.  Please read
 the COPYING and LICENSE files that came with the num-utils package
 
@@ -194,7 +194,7 @@ submissions or help for the project.
 
 =head1 MORE INFO
 
-More info on bound can be found at:
+More info on numbound can be found at:
 
 =over 1
 

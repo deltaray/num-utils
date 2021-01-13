@@ -22,20 +22,20 @@ VERSION	= $(shell cat VERSION)
 PROJECT	= num-utils
 DIST	= $(PROJECT)-$(VERSION)
 FILES	= $(shell cat MANIFEST)
-UTILS	= average bound interval normalize numgrep numprocess numsum random range round
+UTILS	= numaverage numbound numinterval numnormalize numgrep numprocess numsum \
+	  numrandom numrange numround
 DOCS	= CHANGELOG COPYING LICENSE MANIFEST template README GOALS WARNING
 TESTS	= file fractionalnums numbers numbers2 README zeros
 # rpm --showrc is gettin to be hard to parse anymore.
 #RPMDIR	= /usr/src/redhat  
 RPMDIR	= $(shell rpm --showrc | grep " _topdir" | \
 	perl -n -e \
-	'/_topdir(?:\s+|\s+:\s+)(\/.*|%{_usrsrc}.*$$)/; \
-	$$dir = $$1; $$dir =~ s|%{_usrsrc}|/usr/src|; print "$$1\n";')
+	'/_topdir(?:\s+|\s+:\s+)(\/.*|%\{_usrsrc\}.*$$)/; \
+	$$dir = $$1; $$dir =~ s|%\{_usrsrc\}|/usr/src|; print "$$1\n";')
 
 # Modify these as necessary
 PERL	= /usr/bin/perl
-BINDIR	= /usr/bin
-TOPDIR	= $(ROOT)/usr
+TOPDIR	= $(ROOT)/usr/local
 MANDIR	= $(TOPDIR)/share/man/man1
 DOCDIR	= $(TOPDIR)/share/doc/$(DIST)
 BINDIR	= $(TOPDIR)/bin
@@ -51,7 +51,7 @@ all: manpages
 		cat $$file | sed 's|^#!/usr/bin/perl|#!$(PERL)|' > $$file.out ; \
 		mv $$file.out $$file ; chmod a+x $$file ; done
 
-install:
+install: all
 	install -m 0755 -o 0 -g 0 -d		$(BINDIR)
 	for util in $(UTILS) ; do \
 	    install -m 0755 -o 0 -g 0 $$util	$(BINDIR) ; done
